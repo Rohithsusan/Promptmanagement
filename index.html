@@ -3,182 +3,249 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PromptVault - Smart Tagging</title>
+<title>PromptVault</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#0c0c0f;
-  --bg2:#131318;
-  --bg3:#1a1a22;
-  --bg4:#22222e;
-  --border:#2a2a38;
-  --border2:#3a3a50;
-  --text:#e8e8f0;
-  --text2:#9898b0;
-  --text3:#5a5a72;
-  --accent:#7c6af7;
-  --accent2:#9d8fff;
-  --accent-bg:rgba(124,106,247,0.12);
-  --accent-border:rgba(124,106,247,0.3);
-  --green:#4ade80;
-  --green-bg:rgba(74,222,128,0.1);
-  --amber:#f59e0b;
-  --amber-bg:rgba(245,158,11,0.1);
-  --red:#f87171;
-  --red-bg:rgba(248,113,113,0.1);
-  --teal:#2dd4bf;
-  --pink:#f472b6;
+  --bg:#f5f5f7;
+  --surface:#ffffff;
+  --surface2:#fafafa;
+  --surface3:#f0f0f3;
+  --border:#e5e5ea;
+  --border2:#d1d1d6;
+  --text:#1c1c1e;
+  --text2:#48484a;
+  --text3:#8e8e93;
+  --text4:#aeaeb2;
+  --accent:#0071e3;
+  --accent-hover:#0077ed;
+  --accent-light:#e8f1fd;
+  --accent-border:#c7defa;
+  --green:#34c759;
+  --green-bg:#edf9f1;
+  --amber:#ff9f0a;
+  --amber-bg:#fff5e6;
+  --red:#ff3b30;
+  --red-bg:#fff0ef;
+  --teal:#30b0c7;
+  --teal-bg:#eaf6f9;
+  --shadow-sm:0 1px 3px rgba(0,0,0,0.06),0 1px 2px rgba(0,0,0,0.04);
+  --shadow:0 4px 16px rgba(0,0,0,0.06),0 1px 4px rgba(0,0,0,0.04);
+  --shadow-lg:0 12px 40px rgba(0,0,0,0.10),0 2px 8px rgba(0,0,0,0.06);
   --radius:10px;
-  --radius-lg:16px;
-  --radius-xl:24px;
+  --radius-lg:14px;
+  --radius-xl:20px;
 }
-html,body{height:100%;background:var(--bg);color:var(--text);font-family:'Sora',sans-serif;font-size:14px;line-height:1.6;overflow:hidden}
-.app{display:grid;grid-template-columns:260px 1fr;height:100vh}
+html,body{height:100%;background:var(--bg);color:var(--text);font-family:'Inter',system-ui,-apple-system,sans-serif;font-size:14px;line-height:1.6;overflow:hidden;-webkit-font-smoothing:antialiased}
+.app{display:grid;grid-template-columns:240px 1fr;height:100vh}
 
 /* SIDEBAR */
-.sidebar{background:var(--bg2);border-right:1px solid var(--border);display:flex;flex-direction:column;overflow:hidden}
-.sidebar-logo{padding:20px 20px 16px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--border)}
-.logo-mark{width:32px;height:32px;background:var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Instrument Serif',serif;font-size:18px;color:#fff}
-.logo-text{font-size:15px;font-weight:600}
-.logo-sub{font-size:10px;color:var(--text3);font-family:'DM Mono',monospace}
-.sidebar-nav{padding:12px 10px;flex:1;overflow-y:auto}
-.nav-section{margin-bottom:20px}
-.nav-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:1.2px;color:var(--text3);padding:0 10px;margin-bottom:6px}
-.nav-item{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:8px;cursor:pointer;color:var(--text2);transition:all 0.15s;font-size:13px;border:1px solid transparent}
-.nav-item:hover{background:var(--bg3);color:var(--text)}
-.nav-item.active{background:var(--accent-bg);color:var(--accent2);border-color:var(--accent-border)}
-.nav-icon{width:18px;font-size:15px}
-.nav-badge{margin-left:auto;background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;border-radius:20px}
-.sidebar-footer{padding:12px;border-top:1px solid var(--border)}
-.stats-pill{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px;display:flex;justify-content:space-between}
+.sidebar{background:var(--surface);border-right:1px solid var(--border);display:flex;flex-direction:column;overflow:hidden}
+.sidebar-logo{padding:24px 20px 20px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--border)}
+.logo-mark{width:34px;height:34px;background:var(--accent);border-radius:9px;display:flex;align-items:center;justify-content:center;font-family:'Inter',sans-serif;font-size:16px;font-weight:700;color:#fff;letter-spacing:-0.5px;flex-shrink:0}
+.logo-text{font-size:15px;font-weight:600;color:var(--text);letter-spacing:-0.3px}
+.logo-sub{font-size:10px;color:var(--text3);font-family:'JetBrains Mono',monospace;margin-top:1px;letter-spacing:0.2px}
+.sidebar-nav{padding:16px 12px;flex:1;overflow-y:auto}
+.nav-section{margin-bottom:24px}
+.nav-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--text4);padding:0 8px;margin-bottom:4px}
+.nav-item{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:8px;cursor:pointer;color:var(--text2);transition:all 0.15s ease;font-size:13.5px;font-weight:400;border:none;background:transparent;position:relative}
+.nav-item:hover{background:var(--surface3);color:var(--text)}
+.nav-item.active{background:var(--accent-light);color:var(--accent);font-weight:500}
+.nav-icon{width:20px;font-size:15px;display:flex;align-items:center;justify-content:center;opacity:0.85}
+.nav-badge{margin-left:auto;background:var(--accent);color:#fff;font-size:10px;font-weight:600;padding:1px 7px;border-radius:20px;font-family:'JetBrains Mono',monospace}
+.sidebar-footer{padding:16px 12px;border-top:1px solid var(--border)}
+.stats-pill{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);padding:14px 12px;display:flex;justify-content:space-around}
 .stat-item{text-align:center}
-.stat-num{font-size:16px;font-weight:600;font-family:'DM Mono',monospace}
-.stat-lbl{font-size:9px;color:var(--text3)}
+.stat-num{font-size:18px;font-weight:600;font-family:'JetBrains Mono',monospace;color:var(--text);letter-spacing:-0.5px}
+.stat-lbl{font-size:9px;color:var(--text3);text-transform:uppercase;letter-spacing:0.6px;margin-top:2px}
 
 /* MAIN */
 .main{display:flex;flex-direction:column;overflow:hidden;background:var(--bg)}
-.topbar{padding:12px 24px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px;background:var(--bg2)}
-.topbar-title{font-size:15px;font-weight:600;flex:1}
-.btn{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:8px;font-size:12px;font-weight:500;cursor:pointer;border:1px solid var(--border2);background:var(--bg3);color:var(--text2);transition:all 0.15s}
-.btn:hover{background:var(--bg4);color:var(--text)}
-.btn-primary{background:var(--accent);color:#fff;border-color:var(--accent)}
-.btn-primary:hover{background:var(--accent2)}
-.btn-sm{padding:5px 10px;font-size:11px}
-.content{flex:1;overflow-y:auto;padding:24px}
+.topbar{padding:0 28px;height:56px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px;background:var(--surface)}
+.topbar-title{font-size:16px;font-weight:600;flex:1;color:var(--text);letter-spacing:-0.3px}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;border:1px solid var(--border2);background:var(--surface);color:var(--text2);transition:all 0.15s ease;font-family:inherit;line-height:1}
+.btn:hover{background:var(--surface3);color:var(--text);border-color:var(--border2)}
+.btn-primary{background:var(--accent);color:#fff;border-color:var(--accent);box-shadow:0 1px 3px rgba(0,113,227,0.3)}
+.btn-primary:hover{background:var(--accent-hover);border-color:var(--accent-hover)}
+.btn-sm{padding:6px 12px;font-size:12px}
+.content{flex:1;overflow-y:auto;padding:28px}
 
 /* INBOX */
-.inbox-layout{display:grid;grid-template-columns:1fr 300px;gap:20px}
-.paste-area{background:var(--bg2);border:1.5px solid var(--border);border-radius:var(--radius-lg);padding:20px;margin-bottom:20px}
+.inbox-layout{display:grid;grid-template-columns:1fr 288px;gap:24px}
+.paste-area{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius-lg);padding:24px;margin-bottom:20px;box-shadow:var(--shadow-sm);transition:border-color 0.15s}
 .paste-area.focused{border-color:var(--accent)}
-.paste-label{font-size:12px;color:var(--text2);margin-bottom:8px;font-weight:500}
-textarea.paste-input{width:100%;min-height:150px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:12px;font-size:13px;color:var(--text);font-family:'DM Mono',monospace;resize:vertical;outline:none}
-textarea.paste-input:focus{border-color:var(--accent)}
+.paste-label{font-size:12px;color:var(--text3);margin-bottom:10px;font-weight:500;letter-spacing:0.1px}
+textarea.paste-input{width:100%;min-height:148px;background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);padding:14px;font-size:13px;color:var(--text);font-family:'JetBrains Mono',monospace;resize:vertical;outline:none;transition:border-color 0.15s;line-height:1.7}
+textarea.paste-input::placeholder{color:var(--text4)}
+textarea.paste-input:focus{border-color:var(--accent);background:#fff}
 
 /* METADATA EDITOR */
-.metadata-section{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;margin-bottom:20px}
-.metadata-title{font-size:13px;font-weight:600;color:var(--text2);margin-bottom:16px;display:flex;align-items:center;gap:8px}
-.metadata-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.metadata-section{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;margin-bottom:20px;box-shadow:var(--shadow-sm)}
+.metadata-title{font-size:12px;font-weight:600;color:var(--text3);margin-bottom:18px;display:flex;align-items:center;gap:7px;text-transform:uppercase;letter-spacing:0.6px}
+.metadata-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:16px}
 .metadata-field{display:flex;flex-direction:column;gap:6px}
-.metadata-field label{font-size:11px;color:var(--text3);font-weight:500}
-.metadata-field input,.metadata-field select{padding:8px 12px;background:var(--bg3);border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:12px;outline:none}
-.metadata-field input:focus,.metadata-field select:focus{border-color:var(--accent)}
-.tags-input-container{display:flex;flex-wrap:wrap;gap:8px;align-items:center;background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:8px;min-height:42px}
-.tag-chip{display:inline-flex;align-items:center;gap:4px;background:var(--accent-bg);color:var(--accent2);padding:4px 8px;border-radius:16px;font-size:11px;border:1px solid var(--accent-border)}
-.tag-chip button{background:none;border:none;color:var(--text3);cursor:pointer;margin-left:4px;font-size:12px}
+.metadata-field label{font-size:11px;color:var(--text3);font-weight:500;letter-spacing:0.2px}
+.metadata-field input,.metadata-field select{padding:9px 12px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:13px;outline:none;font-family:inherit;transition:border-color 0.15s,background 0.15s;-webkit-appearance:none}
+.metadata-field input:focus,.metadata-field select:focus{border-color:var(--accent);background:#fff;box-shadow:0 0 0 3px rgba(0,113,227,0.08)}
+.tags-input-container{display:flex;flex-wrap:wrap;gap:6px;align-items:center;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:8px 10px;min-height:42px;transition:border-color 0.15s}
+.tags-input-container:focus-within{border-color:var(--accent);background:#fff;box-shadow:0 0 0 3px rgba(0,113,227,0.08)}
+.tag-chip{display:inline-flex;align-items:center;gap:4px;background:var(--accent-light);color:var(--accent);padding:3px 9px;border-radius:20px;font-size:11.5px;font-weight:500;border:1px solid var(--accent-border)}
+.tag-chip button{background:none;border:none;color:var(--text3);cursor:pointer;margin-left:2px;font-size:13px;line-height:1;display:flex;align-items:center;padding:0;transition:color 0.1s}
 .tag-chip button:hover{color:var(--red)}
-.tags-input{flex:1;min-width:100px;background:none;border:none;color:var(--text);font-size:12px;outline:none}
-.suggestions{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
-.suggestion-tag{background:var(--bg4);color:var(--text2);padding:4px 10px;border-radius:16px;font-size:10px;cursor:pointer;transition:all 0.15s}
-.suggestion-tag:hover{background:var(--accent);color:#fff}
+.tags-input{flex:1;min-width:80px;background:none;border:none;color:var(--text);font-size:12.5px;outline:none;font-family:inherit}
+.tags-input::placeholder{color:var(--text4)}
+.suggestions{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
+.suggestion-tag{background:var(--surface3);color:var(--text2);padding:3px 10px;border-radius:16px;font-size:11px;font-weight:500;cursor:pointer;transition:all 0.15s;border:1px solid var(--border)}
+.suggestion-tag:hover{background:var(--accent-light);color:var(--accent);border-color:var(--accent-border)}
 
 /* SIMILARITY PANEL */
-.similarity-panel{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;margin-bottom:20px}
+.similarity-panel{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;margin-bottom:20px;box-shadow:var(--shadow-sm)}
 .similarity-item{margin-bottom:12px}
 .similarity-header{display:flex;justify-content:space-between;margin-bottom:4px;font-size:11px}
-.similarity-bar{height:4px;background:var(--bg4);border-radius:2px;overflow:hidden}
-.similarity-fill{height:100%;background:var(--green);transition:width 0.3s}
-.match-card{background:var(--bg3);border-radius:8px;padding:10px;margin-top:12px;cursor:pointer}
-.match-title{font-size:12px;font-weight:500;margin-bottom:4px}
-.match-similarity{font-size:10px;color:var(--green)}
-.word-diff-container{background:var(--bg3);border-radius:8px;padding:12px;margin-top:12px}
-.word-diff-title{font-size:11px;color:var(--text2);margin-bottom:8px}
-.word-added{color:var(--green);background:var(--green-bg);padding:2px 4px;border-radius:4px;margin:0 2px;display:inline-block}
-.word-removed{color:var(--red);background:var(--red-bg);padding:2px 4px;border-radius:4px;text-decoration:line-through;margin:0 2px;display:inline-block}
-.word-unchanged{color:var(--text3);display:inline-block}
+.similarity-bar{height:3px;background:var(--surface3);border-radius:2px;overflow:hidden}
+.similarity-fill{height:100%;background:var(--green);transition:width 0.4s ease;border-radius:2px}
+.match-card{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);padding:12px 14px;margin-top:12px;cursor:pointer;transition:all 0.15s}
+.match-card:hover{border-color:var(--border2);background:#fff;box-shadow:var(--shadow-sm)}
+.match-title{font-size:12.5px;font-weight:500;margin-bottom:3px;color:var(--text)}
+.match-similarity{font-size:11px;color:var(--green);font-weight:500;margin-bottom:6px}
+.word-diff-container{background:var(--surface3);border-radius:8px;padding:10px 12px;margin-top:10px}
+.word-diff-title{font-size:10.5px;color:var(--text3);margin-bottom:6px;font-weight:500;text-transform:uppercase;letter-spacing:0.4px}
+.word-added{color:var(--green);background:var(--green-bg);padding:1px 5px;border-radius:4px;margin:0 2px;display:inline-block;font-size:11px}
+.word-removed{color:var(--red);background:var(--red-bg);padding:1px 5px;border-radius:4px;text-decoration:line-through;margin:0 2px;display:inline-block;font-size:11px}
+.word-unchanged{color:var(--text3);display:inline-block;font-size:11px}
 
-/* AI RESULT */
-.ai-result{background:var(--bg2);border:1px solid var(--green);border-radius:var(--radius-lg);padding:20px;display:none}
-.ai-result.visible{display:block;animation:slideIn 0.3s}
-@keyframes slideIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+/* SAVE CTA */
+.ai-result{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;display:none;box-shadow:var(--shadow-sm)}
+.ai-result.visible{display:block;animation:slideIn 0.25s ease}
+@keyframes slideIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
 
-.tag{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:20px;font-size:11px;background:var(--accent-bg);color:var(--accent2);border:1px solid var(--accent-border)}
-.tag.cat{background:rgba(45,212,191,0.1);color:var(--teal)}
-.tag.tool{background:rgba(244,114,182,0.1);color:var(--pink)}
-.tag.family{background:rgba(245,158,11,0.1);color:var(--amber)}
+/* TAGS */
+.tag{display:inline-flex;align-items:center;gap:3px;padding:3px 9px;border-radius:20px;font-size:11px;font-weight:500;background:var(--accent-light);color:var(--accent);border:1px solid var(--accent-border)}
+.tag.cat{background:var(--teal-bg);color:var(--teal);border-color:rgba(48,176,199,0.25)}
+.tag.tool{background:var(--amber-bg);color:var(--amber);border-color:rgba(255,159,10,0.25)}
+.tag.family{background:var(--surface3);color:var(--text2);border-color:var(--border2)}
 
 /* LIBRARY TOGGLE */
-.lib-toggle{display:flex;gap:10px;margin-bottom:20px;background:var(--bg3);padding:6px;border-radius:12px;width:fit-content}
-.toggle-btn{padding:8px 20px;border-radius:8px;cursor:pointer;font-size:12px;font-weight:500;transition:all 0.2s;background:transparent;color:var(--text3);border:none}
-.toggle-btn.active{background:var(--accent);color:#fff}
+.lib-toggle{display:flex;gap:2px;margin-bottom:22px;background:var(--surface3);padding:4px;border-radius:10px;width:fit-content;border:1px solid var(--border)}
+.toggle-btn{padding:7px 18px;border-radius:7px;cursor:pointer;font-size:12.5px;font-weight:500;transition:all 0.18s;background:transparent;color:var(--text3);border:none;font-family:inherit}
+.toggle-btn.active{background:var(--surface);color:var(--text);box-shadow:var(--shadow-sm)}
 
-.prompt-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px}
-.prompt-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px;cursor:pointer;transition:all 0.2s}
-.prompt-card:hover{border-color:var(--border2);transform:translateY(-2px)}
-.card-header{display:flex;justify-content:space-between;margin-bottom:10px}
-.card-title{font-size:13px;font-weight:600;flex:1}
-.card-star{background:none;border:none;color:var(--text3);cursor:pointer;font-size:14px}
+/* LIBRARY SEARCH */
+.lib-header{margin-bottom:20px}
+.lib-search{position:relative;max-width:320px}
+.lib-search-icon{position:absolute;left:11px;top:50%;transform:translateY(-50%);font-size:13px;opacity:0.5;pointer-events:none}
+.lib-search input{width:100%;padding:9px 12px 9px 34px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);font-size:13px;color:var(--text);outline:none;font-family:inherit;transition:border-color 0.15s}
+.lib-search input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(0,113,227,0.08)}
+.lib-search input::placeholder{color:var(--text4)}
+
+/* CARDS */
+.prompt-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.prompt-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;cursor:pointer;transition:all 0.18s ease;box-shadow:var(--shadow-sm)}
+.prompt-card:hover{border-color:var(--border2);box-shadow:var(--shadow);transform:translateY(-1px)}
+.card-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}
+.card-title{font-size:13.5px;font-weight:600;flex:1;color:var(--text);letter-spacing:-0.2px;line-height:1.4}
+.card-star{background:none;border:none;color:var(--text4);cursor:pointer;font-size:16px;padding:0;margin-left:8px;transition:color 0.15s;line-height:1}
+.card-star:hover{color:var(--amber)}
 .card-star.starred{color:var(--amber)}
-.card-preview{font-size:11px;color:var(--text3);margin-bottom:10px;line-height:1.5}
+.card-preview{font-size:12.5px;color:var(--text3);margin-bottom:14px;line-height:1.6}
 .card-footer{display:flex;justify-content:space-between;align-items:center}
 .card-tags{display:flex;gap:4px;flex-wrap:wrap}
-.card-time{font-size:10px;color:var(--text3);font-family:'DM Mono',monospace}
-.card-similarity-badge{font-size:9px;background:var(--green-bg);color:var(--green);padding:2px 6px;border-radius:10px}
+.card-time{font-size:10.5px;color:var(--text4);font-family:'JetBrains Mono',monospace}
+.card-similarity-badge{font-size:10px;background:var(--green-bg);color:var(--green);padding:2px 8px;border-radius:10px;font-weight:500;border:1px solid rgba(52,199,89,0.2)}
 
-.empty-state{text-align:center;padding:60px 20px;color:var(--text3)}
-.toast{position:fixed;bottom:20px;right:20px;background:var(--bg3);border:1px solid var(--green);color:var(--green);padding:10px 16px;border-radius:10px;font-size:12px;z-index:2000;opacity:0;transform:translateY(10px);transition:all 0.3s}
+/* RECENT SIDEBAR */
+.recent-list{display:flex;flex-direction:column;gap:8px}
+.recent-row{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:all 0.15s;box-shadow:var(--shadow-sm)}
+.recent-row:hover{border-color:var(--border2);box-shadow:var(--shadow)}
+.recent-row-icon{width:32px;height:32px;background:var(--surface3);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.family-badge{background:var(--amber-bg);color:var(--amber);padding:1px 8px;border-radius:10px;font-size:10px;font-weight:500;margin-left:6px;border:1px solid rgba(255,159,10,0.2)}
+
+/* FAMILIES */
+.family-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px}
+.family-item-row{padding:10px 12px;margin:4px 0;background:var(--surface2);border:1px solid var(--border);border-radius:8px;cursor:pointer;transition:all 0.15s}
+.family-item-row:hover{background:#fff;border-color:var(--border2)}
+
+/* MODAL */
+.empty-state{text-align:center;padding:72px 20px;color:var(--text3)}
+.empty-state-icon{font-size:32px;margin-bottom:12px;opacity:0.4}
+.empty-state-text{font-size:14px;font-weight:500;color:var(--text3)}
+.empty-state-sub{font-size:12.5px;color:var(--text4);margin-top:4px}
+
+.toast{position:fixed;bottom:24px;right:24px;background:var(--text);color:#fff;padding:10px 18px;border-radius:var(--radius);font-size:12.5px;font-weight:500;z-index:2000;opacity:0;transform:translateY(8px);transition:all 0.25s ease;box-shadow:var(--shadow-lg)}
 .toast.show{opacity:1;transform:translateY(0)}
-.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.8);display:flex;align-items:center;justify-content:center;z-index:1000;display:none}
+
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.35);display:flex;align-items:center;justify-content:center;z-index:1000;display:none;backdrop-filter:blur(4px)}
 .modal-overlay.visible{display:flex}
-.modal{background:var(--bg2);border:1px solid var(--border2);border-radius:var(--radius-xl);padding:24px;width:650px;max-width:90vw;max-height:80vh;overflow-y:auto}
-.modal-header{display:flex;justify-content:space-between;margin-bottom:16px}
-.modal-title{font-size:16px;font-weight:600}
-.modal-close{background:none;border:none;color:var(--text3);cursor:pointer;font-size:18px}
-.prompt-full{font-family:'DM Mono',monospace;font-size:12px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:14px;white-space:pre-wrap;margin-bottom:16px}
-.recent-list{display:flex;flex-direction:column;gap:10px}
-.recent-row{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:12px;display:flex;align-items:center;gap:12px;cursor:pointer}
-.recent-row:hover{border-color:var(--border2)}
-.family-badge{background:var(--amber-bg);color:var(--amber);padding:2px 8px;border-radius:12px;font-size:9px;margin-left:8px}
+.modal{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-xl);padding:28px;width:620px;max-width:90vw;max-height:82vh;overflow-y:auto;box-shadow:var(--shadow-lg)}
+.modal-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px}
+.modal-title{font-size:17px;font-weight:600;color:var(--text);letter-spacing:-0.3px;line-height:1.3;padding-right:16px}
+.modal-close{background:var(--surface3);border:1px solid var(--border);color:var(--text2);cursor:pointer;font-size:14px;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all 0.15s;flex-shrink:0}
+.modal-close:hover{background:var(--surface);color:var(--text);border-color:var(--border2)}
+.prompt-full{font-family:'JetBrains Mono',monospace;font-size:12.5px;background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);padding:16px;white-space:pre-wrap;margin-bottom:18px;color:var(--text);line-height:1.7}
+.modal-meta{font-size:11.5px;color:var(--text3);margin-bottom:18px;padding:12px 14px;background:var(--surface2);border-radius:8px}
+.modal-actions{display:flex;gap:8px;flex-wrap:wrap}
 </style>
 </head>
 <body>
 <div class="app">
   <div class="sidebar">
-    <div class="sidebar-logo"><div class="logo-mark">P</div><div><div class="logo-text">PromptVault</div><div class="logo-sub">Smart Tagging</div></div></div>
-    <div class="sidebar-nav">
-      <div class="nav-section"><div class="nav-label">Workspace</div>
-        <div class="nav-item active" onclick="showPage('inbox')"><div class="nav-icon">📥</div><span>Inbox</span><div class="nav-badge" id="inbox-badge">0</div></div>
-        <div class="nav-item" onclick="showPage('library')"><div class="nav-icon">📚</div><span>Library</span></div>
-        <div class="nav-item" onclick="showPage('families')"><div class="nav-icon">🧬</div><span>Families</span></div>
-      </div>
-      <div class="nav-section"><div class="nav-label">Organize</div>
-        <div class="nav-item" onclick="showPage('favorites')"><div class="nav-icon">⭐</div><span>Favorites</span></div>
-        <div class="nav-item" onclick="showPage('recent')"><div class="nav-icon">🕐</div><span>Recent</span></div>
+    <div class="sidebar-logo">
+      <div class="logo-mark">P</div>
+      <div>
+        <div class="logo-text">PromptVault</div>
+        <div class="logo-sub">Smart Tagging</div>
       </div>
     </div>
-    <div class="sidebar-footer"><div class="stats-pill">
-      <div class="stat-item"><div class="stat-num" id="stat-total">0</div><div class="stat-lbl">Prompts</div></div>
-      <div class="stat-item"><div class="stat-num" id="stat-fam">0</div><div class="stat-lbl">Families</div></div>
-      <div class="stat-item"><div class="stat-num" id="stat-fav">0</div><div class="stat-lbl">Fav</div></div>
-    </div></div>
+    <div class="sidebar-nav">
+      <div class="nav-section">
+        <div class="nav-label">Workspace</div>
+        <div class="nav-item active" onclick="showPage('inbox')"><div class="nav-icon">&#8203;</div><span>Inbox</span><div class="nav-badge" id="inbox-badge">0</div></div>
+        <div class="nav-item" onclick="showPage('library')"><div class="nav-icon">&#8203;</div><span>Library</span></div>
+        <div class="nav-item" onclick="showPage('families')"><div class="nav-icon">&#8203;</div><span>Families</span></div>
+      </div>
+      <div class="nav-section">
+        <div class="nav-label">Organize</div>
+        <div class="nav-item" onclick="showPage('favorites')"><div class="nav-icon">&#8203;</div><span>Favorites</span></div>
+        <div class="nav-item" onclick="showPage('recent')"><div class="nav-icon">&#8203;</div><span>Recent</span></div>
+      </div>
+    </div>
+    <div class="sidebar-footer">
+      <div class="stats-pill">
+        <div class="stat-item">
+          <div class="stat-num" id="stat-total">0</div>
+          <div class="stat-lbl">Prompts</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num" id="stat-fam">0</div>
+          <div class="stat-lbl">Families</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num" id="stat-fav">0</div>
+          <div class="stat-lbl">Fav</div>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="main">
-    <div class="topbar"><div class="topbar-title" id="topbar-title">Inbox</div><div class="topbar-actions" id="topbar-actions"></div></div>
+    <div class="topbar">
+      <div class="topbar-title" id="topbar-title">Inbox</div>
+      <div class="topbar-actions" id="topbar-actions"></div>
+    </div>
     <div class="content" id="content-area"></div>
   </div>
 </div>
-<div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)"><div class="modal" id="modal"><div class="modal-header"><div class="modal-title" id="modal-title"></div><button class="modal-close" onclick="closeModal()">✕</button></div><div class="modal-body" id="modal-body"></div></div></div>
+
+<div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
+  <div class="modal" id="modal">
+    <div class="modal-header">
+      <div class="modal-title" id="modal-title"></div>
+      <button class="modal-close" onclick="closeModal()">&#10005;</button>
+    </div>
+    <div class="modal-body" id="modal-body"></div>
+  </div>
+</div>
 <div class="toast" id="toast"></div>
 
 <script>
@@ -251,11 +318,11 @@ function getWordDiff(newText, oldText) {
   const oldWords = oldText.toLowerCase().split(/\s+/);
   const oldSet = new Set(oldWords);
   const newSet = new Set(newWords);
-  
+
   const added = newWords.filter(w => !oldSet.has(w));
   const removed = oldWords.filter(w => !newSet.has(w));
   const common = newWords.filter(w => oldSet.has(w));
-  
+
   return { added: [...new Set(added)], removed: [...new Set(removed)], common: [...new Set(common)] };
 }
 
@@ -265,7 +332,7 @@ function highlightWordDiff(newText, oldText) {
   const { added, removed, common } = getWordDiff(newText, oldText);
   let result = '';
   const words = newText.toLowerCase().split(/\s+/);
-  
+
   for(let word of words) {
     if(added.includes(word)) {
       result += `<span class="word-added">+${escapeHtml(word)}</span> `;
@@ -281,10 +348,10 @@ function highlightWordDiff(newText, oldText) {
 // Auto-detect families based on similarity
 function autoDetectAndBuildFamilies() {
   DB.families = {};
-  
+
   // Reset family assignments
   DB.prompts.forEach(p => p.family = '');
-  
+
   const similarities = [];
   for(let i = 0; i < DB.prompts.length; i++) {
     for(let j = i + 1; j < DB.prompts.length; j++) {
@@ -294,10 +361,10 @@ function autoDetectAndBuildFamilies() {
       }
     }
   }
-  
+
   similarities.sort((a,b) => b.sim - a.sim);
   const usedPrompts = new Set();
-  
+
   for(let sim of similarities) {
     if(!usedPrompts.has(sim.p1.id) && !usedPrompts.has(sim.p2.id)) {
       const familyName = sim.p1.title.split(' ').slice(0, 2).join(' ') + ' Family';
@@ -305,9 +372,9 @@ function autoDetectAndBuildFamilies() {
       sim.p2.family = familyName;
       usedPrompts.add(sim.p1.id);
       usedPrompts.add(sim.p2.id);
-      
+
       if(!DB.families[familyName]) {
-        DB.families[familyName] = { prompts: [], icon: '📊', color: '#7c6af7' };
+        DB.families[familyName] = { prompts: [], icon: '', color: '#0071e3' };
       }
       DB.families[familyName].prompts.push(sim.p1.id, sim.p2.id);
     }
@@ -344,7 +411,7 @@ function generateSuggestions(text) {
   const lower = text.toLowerCase();
   let title = text.split(' ').slice(0, 6).join(' ');
   if(title.length > 50) title = title.substring(0, 47) + '...';
-  
+
   let tags = [];
   if(lower.includes('ui') || lower.includes('design') || lower.includes('dashboard')) tags.push('ui');
   if(lower.includes('code') || lower.includes('react') || lower.includes('javascript')) tags.push('code');
@@ -354,18 +421,18 @@ function generateSuggestions(text) {
   if(lower.includes('dark') || lower.includes('dark mode')) tags.push('dark-mode');
   if(lower.includes('mobile')) tags.push('mobile');
   if(tags.length === 0) tags = ['prompt'];
-  
+
   let category = 'Other';
   if(lower.includes('dashboard') || lower.includes('ui') || lower.includes('design')) category = 'UI Design';
   else if(lower.includes('code') || lower.includes('react') || lower.includes('api')) category = 'Coding';
   else if(lower.includes('seo') || lower.includes('blog') || lower.includes('marketing')) category = 'Marketing';
   else if(lower.includes('youtube') || lower.includes('video')) category = 'YouTube';
-  
+
   let tool = 'Unknown';
   if(lower.includes('claude')) tool = 'Claude';
   else if(lower.includes('chatgpt') || lower.includes('gpt')) tool = 'ChatGPT';
   else if(lower.includes('midjourney')) tool = 'Midjourney';
-  
+
   return { title, tags, category, tool };
 }
 
@@ -382,57 +449,63 @@ function renderInbox() {
     <div class="inbox-layout">
       <div>
         <div class="paste-area" id="paste-area">
-          <div class="paste-label">📝 Step 1: Paste your prompt</div>
+          <div class="paste-label">Step 1 &mdash; Paste your prompt</div>
           <textarea class="paste-input" id="paste-input" placeholder="Paste your AI prompt here..." oninput="onPasteInput()" rows="6"></textarea>
         </div>
-        
+
         <div class="metadata-section" id="metadata-section" style="display:none">
-          <div class="metadata-title">✏️ Step 2: Review & Edit Metadata</div>
+          <div class="metadata-title">Step 2 &mdash; Review metadata</div>
           <div class="metadata-grid">
             <div class="metadata-field">
-              <label>📌 Title</label>
+              <label>Title</label>
               <input type="text" id="prompt-title" placeholder="Prompt title" onchange="updateTitleSuggestions(this.value)">
             </div>
             <div class="metadata-field">
-              <label>📂 Category</label>
+              <label>Category</label>
               <select id="prompt-category" onchange="updateCategorySuggestions(this.value)">
                 <option>UI Design</option><option>Coding</option><option>Marketing</option><option>YouTube</option><option>Writing</option><option>Research</option><option>Other</option>
               </select>
             </div>
             <div class="metadata-field">
-              <label>🏷️ Tags (click to add, type and press Enter)</label>
+              <label>Tags &mdash; type and press Enter to add</label>
               <div class="tags-input-container" id="tags-container">
-                <div id="tag-list"></div>
+                <div id="tag-list" style="display:contents"></div>
                 <input type="text" class="tags-input" id="tag-input" placeholder="Add tag..." onkeydown="handleTagKeydown(event)">
               </div>
               <div class="suggestions" id="tag-suggestions"></div>
             </div>
             <div class="metadata-field">
-              <label>🛠️ AI Tool</label>
+              <label>AI Tool</label>
               <select id="prompt-tool">
                 <option>Unknown</option><option>Claude</option><option>ChatGPT</option><option>Midjourney</option><option>Gemini</option><option>DALL-E</option>
               </select>
             </div>
           </div>
         </div>
-        
+
         <div class="similarity-panel" id="similarity-panel" style="display:none">
-          <div class="metadata-title">🔍 Step 3: Similar Prompts Found</div>
+          <div class="metadata-title">Step 3 &mdash; Similar prompts</div>
           <div id="similar-prompts-list"></div>
         </div>
-        
+
         <div class="ai-result" id="ai-result">
-          <button class="btn btn-primary" style="width:100%" onclick="savePromptWithMetadata()">💾 Save to Library</button>
+          <button class="btn btn-primary" style="width:100%;justify-content:center;padding:11px 20px;font-size:13.5px" onclick="savePromptWithMetadata()">Save to Library</button>
         </div>
       </div>
-      
-      <div class="recent-list">
-        <div class="metadata-title" style="margin-bottom:12px">⚡ Recent Prompts</div>
-        ${DB.prompts.slice(-3).reverse().map(p => `
-          <div class="recent-row" onclick="openPromptModal('${p.id}')">
-            <div>📄</div><div><div style="font-size:12px;font-weight:500">${escapeHtml(p.title)}</div><div style="font-size:10px;color:var(--text3)">${timeAgo(p.created)}</div></div>
-          </div>
-        `).join('')}
+
+      <div>
+        <div class="metadata-title" style="margin-bottom:14px;font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:0.6px">Recent Prompts</div>
+        <div class="recent-list">
+          ${DB.prompts.slice(-5).reverse().map(p => `
+            <div class="recent-row" onclick="openPromptModal('${p.id}')">
+              <div class="recent-row-icon">&#128196;</div>
+              <div style="min-width:0">
+                <div style="font-size:12.5px;font-weight:500;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${escapeHtml(p.title)}</div>
+                <div style="font-size:11px;color:var(--text4);margin-top:1px">${timeAgo(p.created)}</div>
+              </div>
+            </div>
+          `).join('')}
+        </div>
       </div>
     </div>
   `;
@@ -441,19 +514,19 @@ function renderInbox() {
 function onPasteInput() {
   const text = document.getElementById('paste-input').value.trim();
   if(text.length < 20) return;
-  
+
   currentPastedText = text;
   currentSuggestions = generateSuggestions(text);
   similarPrompts = findSimilarPrompts(text);
-  
+
   document.getElementById('metadata-section').style.display = 'block';
   document.getElementById('similarity-panel').style.display = 'block';
   document.getElementById('ai-result').classList.add('visible');
-  
+
   document.getElementById('prompt-title').value = currentSuggestions.title;
   document.getElementById('prompt-category').value = currentSuggestions.category;
   document.getElementById('prompt-tool').value = currentSuggestions.tool;
-  
+
   renderTags(currentSuggestions.tags);
   renderTagSuggestions(currentSuggestions.tags);
   renderSimilarPrompts();
@@ -462,7 +535,7 @@ function onPasteInput() {
 function renderTags(tags) {
   const container = document.getElementById('tag-list');
   container.innerHTML = tags.map(tag => `
-    <span class="tag-chip">${escapeHtml(tag)}<button onclick="removeTag('${tag}')">×</button></span>
+    <span class="tag-chip">${escapeHtml(tag)}<button onclick="removeTag('${tag}')">&#215;</button></span>
   `).join('');
 }
 
@@ -471,8 +544,8 @@ function renderTagSuggestions(existingTags) {
   const available = allSuggestions.filter(s => !existingTags.includes(s)).slice(0, 8);
   const container = document.getElementById('tag-suggestions');
   if(available.length) {
-    container.innerHTML = `<span style="font-size:10px;color:var(--text3)">Suggestions:</span> ` + 
-      available.map(s => `<span class="suggestion-tag" onclick="addSuggestionTag('${s}')">+${s}</span>`).join('');
+    container.innerHTML = `<span style="font-size:10.5px;color:var(--text4)">Suggestions:</span> ` +
+      available.map(s => `<span class="suggestion-tag" onclick="addSuggestionTag('${s}')">+ ${s}</span>`).join('');
   } else {
     container.innerHTML = '';
   }
@@ -511,7 +584,7 @@ function updateCategorySuggestions(val) { currentSuggestions.category = val; }
 function renderSimilarPrompts() {
   const container = document.getElementById('similar-prompts-list');
   if(similarPrompts.length === 0) {
-    container.innerHTML = '<div style="font-size:12px;color:var(--text3)">No similar prompts found</div>';
+    container.innerHTML = '<div style="font-size:12.5px;color:var(--text3)">No similar prompts found.</div>';
     return;
   }
   container.innerHTML = similarPrompts.map(p => `
@@ -521,8 +594,8 @@ function renderSimilarPrompts() {
       <div class="similarity-bar"><div class="similarity-fill" style="width:${p.similarity * 100}%"></div></div>
       ${p.wordDiff.added.length > 0 || p.wordDiff.removed.length > 0 ? `
         <div class="word-diff-container">
-          <div class="word-diff-title">📝 Text Differences:</div>
-          <div style="font-size:11px;line-height:1.6">
+          <div class="word-diff-title">Text differences</div>
+          <div style="line-height:1.8">
             ${p.wordDiff.added.slice(0,5).map(w => `<span class="word-added">+${escapeHtml(w)}</span>`).join(' ')}
             ${p.wordDiff.removed.slice(0,5).map(w => `<span class="word-removed">-${escapeHtml(w)}</span>`).join(' ')}
             ${p.wordDiff.added.length > 5 ? '<span class="word-unchanged">...</span>' : ''}
@@ -547,10 +620,10 @@ function savePromptWithMetadata() {
   const title = document.getElementById('prompt-title').value.trim();
   if(!title) { showToast('Please enter a title'); return; }
   if(!currentPastedText) { showToast('Please paste a prompt first'); return; }
-  
+
   const newId = 'p' + Date.now();
   const now = Date.now();
-  
+
   // Find best match for family assignment
   let bestMatch = null;
   let bestSimilarity = 0;
@@ -561,7 +634,7 @@ function savePromptWithMetadata() {
       bestMatch = p;
     }
   }
-  
+
   const newPrompt = {
     id: newId,
     title: title,
@@ -577,25 +650,25 @@ function savePromptWithMetadata() {
     lastEdited: now,
     similarityToParent: bestSimilarity
   };
-  
+
   DB.prompts.push(newPrompt);
   DB.recentActivity.unshift(newId);
   if(DB.recentActivity.length > 20) DB.recentActivity.pop();
-  
+
   // Rebuild families
   autoDetectAndBuildFamilies();
-  
+
   updateStats();
   saveToLocalStorage(); // Save after adding new prompt
-  showToast(`✓ "${title}" saved to library!`);
-  
+  showToast(`"${title}" saved to library`);
+
   document.getElementById('paste-input').value = '';
   document.getElementById('metadata-section').style.display = 'none';
   document.getElementById('similarity-panel').style.display = 'none';
   document.getElementById('ai-result').classList.remove('visible');
   currentPastedText = '';
   currentSuggestions = { title: '', tags: [], category: 'Other', tool: 'Unknown', family: '' };
-  
+
   renderInbox();
 }
 
@@ -616,29 +689,29 @@ function getUniquePrompts() {
 
 function renderLibrary() {
   autoDetectAndBuildFamilies();
-  
+
   let promptsToShow = [];
   if(libraryFilterMode === 'unique') {
     promptsToShow = getUniquePrompts();
   } else {
     promptsToShow = [...DB.prompts];
   }
-  
+
   promptsToShow = promptsToShow.reverse();
   const inFamilies = getPromptsInFamilies();
-  
+
   document.getElementById('content-area').innerHTML = `
     <div class="lib-toggle">
-      <button class="toggle-btn ${libraryFilterMode === 'all' ? 'active' : ''}" onclick="setLibraryFilter('all')">📚 All Prompts (${DB.prompts.length})</button>
-      <button class="toggle-btn ${libraryFilterMode === 'unique' ? 'active' : ''}" onclick="setLibraryFilter('unique')">✨ Unique Prompts (${getUniquePrompts().length})</button>
+      <button class="toggle-btn ${libraryFilterMode === 'all' ? 'active' : ''}" onclick="setLibraryFilter('all')">All Prompts (${DB.prompts.length})</button>
+      <button class="toggle-btn ${libraryFilterMode === 'unique' ? 'active' : ''}" onclick="setLibraryFilter('unique')">Unique (${getUniquePrompts().length})</button>
     </div>
     <div class="lib-header">
       <div class="lib-search">
-        <span class="lib-search-icon">🔍</span>
-        <input type="text" placeholder="Search library..." id="lib-search" oninput="libSearch(this.value)">
+        <span class="lib-search-icon">&#128269;</span>
+        <input type="text" placeholder="Search by title or tag..." id="lib-search" oninput="libSearch(this.value)">
       </div>
     </div>
-    <div class="prompt-grid" id="prompt-grid">${promptsToShow.map(p => renderPromptCard(p, inFamilies.has(p.id))).join('') || '<div class="empty-state">No prompts found</div>'}</div>
+    <div class="prompt-grid" id="prompt-grid">${promptsToShow.map(p => renderPromptCard(p, inFamilies.has(p.id))).join('') || '<div class="empty-state"><div class="empty-state-icon">&#128218;</div><div class="empty-state-text">No prompts yet</div><div class="empty-state-sub">Add your first prompt from the Inbox</div></div>'}</div>
   `;
 }
 
@@ -646,17 +719,17 @@ function renderPromptCard(p, isInFamily) {
   const similarityBadge = p.similarityToParent > 0 ? `<span class="card-similarity-badge">${(p.similarityToParent * 100).toFixed(0)}% match</span>` : '';
   return `<div class="prompt-card" onclick="openPromptModal('${p.id}')">
     <div class="card-header">
-      <div class="card-title">${escapeHtml(p.title)}${isInFamily ? '<span class="family-badge">👥 Family</span>' : ''}</div>
-      <button class="card-star ${p.starred?'starred':''}" onclick="event.stopPropagation();toggleStar('${p.id}')">${p.starred?'★':'☆'}</button>
+      <div class="card-title">${escapeHtml(p.title)}${isInFamily ? '<span class="family-badge">Family</span>' : ''}</div>
+      <button class="card-star ${p.starred?'starred':''}" onclick="event.stopPropagation();toggleStar('${p.id}')">${p.starred?'&#9733;':'&#9734;'}</button>
     </div>
-    <div class="card-preview">${escapeHtml(p.text.substring(0, 100))}...</div>
+    <div class="card-preview">${escapeHtml(p.text.substring(0, 100))}&#8230;</div>
     <div class="card-footer">
-      <div class="card-tags">${p.tags.slice(0,3).map(t=>`<span class="tag" style="font-size:9px">#${t}</span>`).join('')}</div>
+      <div class="card-tags">${p.tags.slice(0,3).map(t=>`<span class="tag" style="font-size:10px">#${t}</span>`).join('')}</div>
       <div class="card-time">${timeAgo(p.created)}</div>
     </div>
-    <div style="margin-top:8px;display:flex;justify-content:space-between;align-items:center">
+    <div style="margin-top:10px;display:flex;justify-content:space-between;align-items:center">
       ${similarityBadge}
-      <span style="font-size:9px;color:var(--text3)">${p.version}</span>
+      <span style="font-size:10px;color:var(--text4);font-family:'JetBrains Mono',monospace">${p.version}</span>
     </div>
   </div>`;
 }
@@ -675,22 +748,35 @@ function libSearch(q) {
     promptsToSearch = [...DB.prompts];
   }
   const filtered = promptsToSearch.filter(p => p.title.toLowerCase().includes(q.toLowerCase()) || p.tags.some(t=>t.includes(q.toLowerCase())));
-  document.getElementById('prompt-grid').innerHTML = filtered.map(p => renderPromptCard(p, inFamilies.has(p.id))).join('') || '<div class="empty-state">No prompts found</div>';
+  document.getElementById('prompt-grid').innerHTML = filtered.map(p => renderPromptCard(p, inFamilies.has(p.id))).join('') || '<div class="empty-state"><div class="empty-state-text">No prompts found</div></div>';
 }
 
 function renderFamilies() {
   autoDetectAndBuildFamilies();
   if(Object.keys(DB.families).length === 0) {
-    document.getElementById('content-area').innerHTML = '<div class="empty-state">No families yet. Save similar prompts to create families.</div>';
+    document.getElementById('content-area').innerHTML = '<div class="empty-state"><div class="empty-state-icon">&#129516;</div><div class="empty-state-text">No families yet</div><div class="empty-state-sub">Save similar prompts to automatically create families</div></div>';
     return;
   }
   document.getElementById('content-area').innerHTML = `<div class="family-grid">${Object.entries(DB.families).map(([name,fam]) => `
-    <div class="prompt-card" style="cursor:default"><div class="card-header"><div class="card-title">🧬 ${escapeHtml(name)}</div><div class="card-time">${fam.prompts.length} versions</div></div>
-    ${fam.prompts.map(id => { const p = DB.prompts.find(x=>x.id===id); return p?`<div onclick="openPromptModal('${p.id}')" style="padding:8px;margin:4px 0;background:var(--bg3);border-radius:6px;cursor:pointer"><div style="font-size:12px">${escapeHtml(p.title)}</div><div style="font-size:10px;color:var(--text3)">${formatDateTime(p.created)}</div></div>`:''; }).join('')}</div>`).join('')}</div>`;
+    <div class="prompt-card" style="cursor:default">
+      <div class="card-header">
+        <div class="card-title">${escapeHtml(name)}</div>
+        <div class="card-time">${fam.prompts.length} version${fam.prompts.length !== 1 ? 's' : ''}</div>
+      </div>
+      <div style="margin-top:4px">
+        ${fam.prompts.map(id => { const p = DB.prompts.find(x=>x.id===id); return p?`<div onclick="openPromptModal('${p.id}')" class="family-item-row"><div style="font-size:12.5px;font-weight:500;color:var(--text)">${escapeHtml(p.title)}</div><div style="font-size:11px;color:var(--text4);margin-top:2px">${formatDateTime(p.created)}</div></div>`:''; }).join('')}
+      </div>
+    </div>`).join('')}</div>`;
 }
 
-function renderFavorites() { const starred=DB.prompts.filter(p=>p.starred); document.getElementById('content-area').innerHTML=`<div class="prompt-grid">${starred.map(p=>renderPromptCard(p, false)).join('')||'<div class="empty-state">No favorites</div>'}</div>`; }
-function renderRecent() { document.getElementById('content-area').innerHTML=`<div class="recent-list">${DB.recentActivity.slice(0,10).map(id=>{const p=DB.prompts.find(x=>x.id===id); return p?`<div class="recent-row" onclick="openPromptModal('${p.id}')"><div>📄</div><div><div>${escapeHtml(p.title)}</div><div style="font-size:10px;color:var(--text3)">${formatDateTime(p.usedAt||p.created)}</div></div></div>`:'';}).join('')}</div>`; }
+function renderFavorites() {
+  const starred=DB.prompts.filter(p=>p.starred);
+  document.getElementById('content-area').innerHTML=`<div class="prompt-grid">${starred.map(p=>renderPromptCard(p, false)).join('')||'<div class="empty-state"><div class="empty-state-icon">&#9733;</div><div class="empty-state-text">No favorites yet</div><div class="empty-state-sub">Star prompts to find them here quickly</div></div>'}</div>`;
+}
+
+function renderRecent() {
+  document.getElementById('content-area').innerHTML=`<div class="recent-list" style="max-width:560px">${DB.recentActivity.slice(0,10).map(id=>{const p=DB.prompts.find(x=>x.id===id); return p?`<div class="recent-row" onclick="openPromptModal('${p.id}')"><div class="recent-row-icon">&#128196;</div><div style="min-width:0;flex:1"><div style="font-size:13px;font-weight:500;color:var(--text)">${escapeHtml(p.title)}</div><div style="font-size:11px;color:var(--text4);margin-top:2px">${formatDateTime(p.usedAt||p.created)}</div></div></div>`:'';}).join('')}</div>`;
+}
 
 function openPromptModal(id) {
   const p = DB.prompts.find(x=>x.id===id);
@@ -698,16 +784,16 @@ function openPromptModal(id) {
   p.usedAt = Date.now();
   saveToLocalStorage(); // Save when prompt is used
   openModal(p.title, `
-    <div style="margin-bottom:12px">${p.tags.map(t=>`<span class="tag">#${t}</span>`).join('')}<span class="tag cat">${p.category}</span><span class="tag tool">${p.tool}</span>${p.family?`<span class="tag family">${p.family}</span>`:''}</div>
+    <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px">${p.tags.map(t=>`<span class="tag">#${t}</span>`).join('')}<span class="tag cat">${p.category}</span><span class="tag tool">${p.tool}</span>${p.family?`<span class="tag family">${p.family}</span>`:''}</div>
     <div class="prompt-full">${escapeHtml(p.text)}</div>
-    <div style="margin-bottom:12px;font-size:11px;color:var(--text3)">📅 Created: ${formatDateTime(p.created)} | Last used: ${formatDateTime(p.usedAt)}</div>
-    <div style="display:flex;gap:8px"><button class="btn btn-primary btn-sm" onclick="copyPrompt('${id}')">📋 Copy</button><button class="btn btn-sm" onclick="toggleStar('${id}');closeModal()">${p.starred?'★ Favorited':'☆ Favorite'}</button><button class="btn btn-sm" onclick="deletePrompt('${id}')">🗑️ Delete</button></div>
+    <div class="modal-meta">Created ${formatDateTime(p.created)} &nbsp;&middot;&nbsp; Last used ${formatDateTime(p.usedAt)}</div>
+    <div class="modal-actions"><button class="btn btn-primary btn-sm" onclick="copyPrompt('${id}')">Copy</button><button class="btn btn-sm" onclick="toggleStar('${id}');closeModal()">${p.starred?'Unfavorite':'Favorite'}</button><button class="btn btn-sm" style="color:var(--red);border-color:var(--red);background:var(--red-bg)" onclick="deletePrompt('${id}')">Delete</button></div>
   `);
 }
 
-function copyPrompt(id) { const p=DB.prompts.find(x=>x.id===id); if(p) navigator.clipboard.writeText(p.text).then(()=>showToast('Copied!')); }
-function toggleStar(id) { const p=DB.prompts.find(x=>x.id===id); if(p){p.starred=!p.starred; updateStats(); if(currentPage==='library') renderLibrary(); if(currentPage==='favorites') renderFavorites(); showToast(p.starred?'★ Favorited':'Removed'); saveToLocalStorage();} }
-function deletePrompt(id) { if(confirm('Delete?')){ DB.prompts=DB.prompts.filter(p=>p.id!==id); DB.recentActivity=DB.recentActivity.filter(x=>x!==id); Object.values(DB.families).forEach(f=>f.prompts=f.prompts.filter(x=>x!==id)); closeModal(); updateStats(); if(currentPage==='library') renderLibrary(); if(currentPage==='families') renderFamilies(); showToast('Deleted'); saveToLocalStorage(); } }
+function copyPrompt(id) { const p=DB.prompts.find(x=>x.id===id); if(p) navigator.clipboard.writeText(p.text).then(()=>showToast('Copied to clipboard')); }
+function toggleStar(id) { const p=DB.prompts.find(x=>x.id===id); if(p){p.starred=!p.starred; updateStats(); if(currentPage==='library') renderLibrary(); if(currentPage==='favorites') renderFavorites(); showToast(p.starred?'Added to favorites':'Removed from favorites'); saveToLocalStorage();} }
+function deletePrompt(id) { if(confirm('Delete this prompt?')){ DB.prompts=DB.prompts.filter(p=>p.id!==id); DB.recentActivity=DB.recentActivity.filter(x=>x!==id); Object.values(DB.families).forEach(f=>f.prompts=f.prompts.filter(x=>x!==id)); closeModal(); updateStats(); if(currentPage==='library') renderLibrary(); if(currentPage==='families') renderFamilies(); showToast('Deleted'); saveToLocalStorage(); } }
 function openModal(title, html) { document.getElementById('modal-title').textContent=title; document.getElementById('modal-body').innerHTML=html; document.getElementById('modal-overlay').classList.add('visible'); }
 function closeModal(e) { if(!e || e.target===document.getElementById('modal-overlay')) document.getElementById('modal-overlay').classList.remove('visible'); }
 
