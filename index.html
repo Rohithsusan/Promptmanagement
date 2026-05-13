@@ -18,7 +18,7 @@
   --text:#1c1c1e;
   --text2:#2e2e2f;
   --text3:#4b4b4b;
-  --text4:#aeaeb2;
+  --text4:#515151;
   --accent:#000000;
   --accent-hover:#0077ed;
   --accent-light:#e8f1fd;
@@ -163,9 +163,10 @@ textarea.paste-input:focus{border-color:var(--accent);background:#fff}
 .family-badge{background:var(--amber-bg);color:var(--amber);padding:1px 8px;border-radius:10px;font-size:10px;font-weight:500;margin-left:6px;border:1px solid rgba(255,159,10,0.2)}
 
 /* FAMILIES */
-.family-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px}
-.family-item-row{padding:10px 12px;margin:4px 0;background:var(--surface2);border:1px solid var(--border);border-radius:8px;cursor:pointer;transition:all 0.15s}
-.family-item-row:hover{background:#fff;border-color:var(--border2)}
+.family-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(380px,1fr));gap:16px}
+.family-item-row{padding:12px 14px;margin:6px 0;background:var(--surface2);border:1px solid var(--border);border-radius:10px;cursor:pointer;transition:all 0.15s}
+.family-item-row:hover{background:#fff;border-color:var(--border2);box-shadow:var(--shadow-sm)}
+.family-diff-preview{margin-top:8px;padding-top:6px;border-top:1px solid var(--border);font-size:10px;line-height:1.5}
 
 /* MODAL */
 .empty-state{text-align:center;padding:72px 20px;color:var(--text3)}
@@ -187,14 +188,14 @@ textarea.paste-input:focus{border-color:var(--accent);background:#fff}
 .modal-meta{font-size:11.5px;color:var(--text3);margin-bottom:18px;padding:12px 14px;background:var(--surface2);border-radius:8px}
 .modal-actions{display:flex;gap:8px;flex-wrap:wrap}
 
-/* RESPONSIVE (layout-only adjustments) */
+/* RESPONSIVE */
 @media (max-width: 1024px){
   .app{grid-template-columns:220px 1fr}
   .topbar{padding:0 20px}
   .content{padding:22px}
   .inbox-layout{grid-template-columns:1fr 260px;gap:18px}
   .prompt-grid{grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
-  .family-grid{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+  .family-grid{grid-template-columns:repeat(auto-fill,minmax(340px,1fr))}
 }
 
 @media (max-width: 820px){
@@ -205,38 +206,29 @@ textarea.paste-input:focus{border-color:var(--accent);background:#fff}
   .metadata-grid{grid-template-columns:1fr;gap:14px}
   .lib-search{max-width:100%}
   .prompt-grid{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
-  .family-grid{grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
+  .family-grid{grid-template-columns:1fr}
   .recent-row{padding:12px}
 }
 
 @media (max-width: 560px){
   html,body{overflow:auto}
   .app{grid-template-columns:1fr;grid-template-rows:auto 1fr;height:auto;min-height:100vh}
-
-  .sidebar{
-    border-right:none;
-    border-bottom:1px solid var(--border);
-  }
+  .sidebar{border-right:none;border-bottom:1px solid var(--border)}
   .sidebar-logo{padding:16px 14px 14px}
   .sidebar-nav{padding:10px 10px;overflow-x:auto;overflow-y:hidden}
   .nav-section{margin-bottom:10px;display:flex;gap:10px;align-items:center;flex-wrap:nowrap}
   .nav-label{display:none}
   .nav-item{white-space:nowrap;flex:0 0 auto}
   .sidebar-footer{display:none}
-
   .topbar{height:auto;min-height:52px;padding:10px 14px;flex-wrap:wrap;row-gap:10px}
   .topbar-title{min-width:0}
   .content{padding:14px}
-
   .paste-area,.metadata-section,.similarity-panel{padding:16px}
   textarea.paste-input{min-height:132px}
-
   .lib-toggle{width:100%}
   .toggle-btn{flex:1;min-width:0}
-
   .prompt-grid{grid-template-columns:1fr}
   .family-grid{grid-template-columns:1fr}
-
   .modal{padding:18px;max-height:86vh}
   .modal-title{font-size:16px}
   .toast{left:14px;right:14px;bottom:14px}
@@ -256,14 +248,14 @@ textarea.paste-input:focus{border-color:var(--accent);background:#fff}
     <div class="sidebar-nav">
       <div class="nav-section">
         <div class="nav-label">Workspace</div>
-        <div class="nav-item active" onclick="showPage('inbox')"><div class="nav-icon">&#128233;</div><span>Inbox</span><div class="nav-badge" id="inbox-badge">0</div></div>
-        <div class="nav-item" onclick="showPage('library')"><div class="nav-icon">&#128218;</div><span>Library</span></div>
-        <div class="nav-item" onclick="showPage('families')"><div class="nav-icon">&#129516;</div><span>Families</span></div>
+        <div class="nav-item active" onclick="showPage('inbox')"><div class="nav-icon">📥</div><span>Inbox</span><div class="nav-badge" id="inbox-badge">0</div></div>
+        <div class="nav-item" onclick="showPage('library')"><div class="nav-icon">📚</div><span>Library</span></div>
+        <div class="nav-item" onclick="showPage('families')"><div class="nav-icon">🧬</div><span>Families</span></div>
       </div>
       <div class="nav-section">
         <div class="nav-label">Organize</div>
-        <div class="nav-item" onclick="showPage('favorites')"><div class="nav-icon">&#9733;</div><span>Favorites</span></div>
-        <div class="nav-item" onclick="showPage('recent')"><div class="nav-icon">&#128337;</div><span>Recent</span></div>
+        <div class="nav-item" onclick="showPage('favorites')"><div class="nav-icon">⭐</div><span>Favorites</span></div>
+        <div class="nav-item" onclick="showPage('recent')"><div class="nav-icon">🕐</div><span>Recent</span></div>
       </div>
     </div>
     <div class="sidebar-footer">
@@ -296,7 +288,7 @@ textarea.paste-input:focus{border-color:var(--accent);background:#fff}
   <div class="modal" id="modal">
     <div class="modal-header">
       <div class="modal-title" id="modal-title"></div>
-      <button class="modal-close" onclick="closeModal()">&#10005;</button>
+      <button class="modal-close" onclick="closeModal()">✕</button>
     </div>
     <div class="modal-body" id="modal-body"></div>
   </div>
@@ -310,7 +302,7 @@ let currentPage = 'inbox';
 let currentPastedText = '';
 let currentSuggestions = { title: '', tags: [], category: 'Other', tool: 'Unknown', family: '' };
 let similarPrompts = [];
-let libraryFilterMode = 'all'; // 'all' or 'unique'
+let libraryFilterMode = 'all';
 
 // Save data to localStorage
 function saveToLocalStorage() {
@@ -320,7 +312,6 @@ function saveToLocalStorage() {
     version: '1.0'
   };
   localStorage.setItem('promptvault_data', JSON.stringify(dataToSave));
-  console.log('Data saved to localStorage');
 }
 
 // Load data from localStorage
@@ -331,10 +322,8 @@ function loadFromLocalStorage() {
       const parsed = JSON.parse(savedData);
       DB.prompts = parsed.prompts;
       DB.recentActivity = parsed.recentActivity;
-      console.log('Data loaded from localStorage:', DB.prompts.length, 'prompts');
       return true;
     } catch(e) {
-      console.error('Failed to parse saved data:', e);
       return false;
     }
   }
@@ -343,8 +332,8 @@ function loadFromLocalStorage() {
 
 // SAMPLE DATA (only used if no saved data exists)
 const SAMPLE_PROMPTS = [
-  {id:'p1', title:'SaaS Dashboard UI', text:'Create a modern SaaS dashboard with a clean sidebar, key metrics at the top, and a revenue chart.', tags:['ui','dashboard'], category:'UI Design', tool:'Claude', family:'', version:'Base', starred:true, created: Date.now()-86400000*5, usedAt: Date.now()-3600000, lastEdited: Date.now()-86400000*5, similarityToParent:0},
-  {id:'p2', title:'Blog SEO Guide', text:'Write an SEO-optimized blog post with H1 title, subheadings, and meta description.', tags:['seo','blog'], category:'Marketing', tool:'ChatGPT', family:'', version:'Base', starred:false, created: Date.now()-86400000*3, usedAt: Date.now()-7200000, lastEdited: Date.now()-86400000*3, similarityToParent:0},
+  {id:'p1', title:'SaaS Dashboard UI', text:'Create a modern SaaS dashboard with a clean sidebar, key metrics at the top, and a revenue chart.', tags:['ui','dashboard'], category:'UI Design', tool:'Claude', family:'', versionNum:1, starred:true, created: Date.now()-86400000*5, usedAt: Date.now()-3600000, lastEdited: Date.now()-86400000*5, similarityToParent:0},
+  {id:'p2', title:'Blog SEO Guide', text:'Write an SEO-optimized blog post with H1 title, subheadings, and meta description.', tags:['seo','blog'], category:'Marketing', tool:'ChatGPT', family:'', versionNum:1, starred:false, created: Date.now()-86400000*3, usedAt: Date.now()-7200000, lastEdited: Date.now()-86400000*3, similarityToParent:0},
 ];
 
 // Initialize data
@@ -353,10 +342,9 @@ function initializeData() {
   if(!hasSavedData) {
     DB.prompts = [...SAMPLE_PROMPTS];
     DB.recentActivity = ['p1','p2'];
-    console.log('Using sample data');
   }
   autoDetectAndBuildFamilies();
-  saveToLocalStorage(); // Save initial state
+  saveToLocalStorage();
 }
 
 // Calculate similarity between two texts
@@ -372,41 +360,26 @@ function getWordDiff(newText, oldText) {
   const newWords = newText.toLowerCase().split(/\s+/);
   const oldWords = oldText.toLowerCase().split(/\s+/);
   const oldSet = new Set(oldWords);
-  const newSet = new Set(newWords);
-
+  
   const added = newWords.filter(w => !oldSet.has(w));
-  const removed = oldWords.filter(w => !newSet.has(w));
-  const common = newWords.filter(w => oldSet.has(w));
-
-  return { added: [...new Set(added)], removed: [...new Set(removed)], common: [...new Set(common)] };
+  const removed = oldWords.filter(w => !new Set(newWords).has(w));
+  
+  return { added: [...new Set(added)].slice(0, 8), removed: [...new Set(removed)].slice(0, 8) };
 }
 
-// Highlight word differences
-function highlightWordDiff(newText, oldText) {
-  if(!oldText) return escapeHtml(newText);
-  const { added, removed, common } = getWordDiff(newText, oldText);
-  let result = '';
-  const words = newText.toLowerCase().split(/\s+/);
-
-  for(let word of words) {
-    if(added.includes(word)) {
-      result += `<span class="word-added">+${escapeHtml(word)}</span> `;
-    } else if(common.includes(word)) {
-      result += `<span class="word-unchanged">${escapeHtml(word)}</span> `;
-    } else {
-      result += escapeHtml(word) + ' ';
-    }
-  }
-  return result;
+// Get diff between two prompts for family view
+function getDiffBetweenPrompts(prompt1, prompt2) {
+  if(!prompt1 || !prompt2) return { added: [], removed: [] };
+  return getWordDiff(prompt1.text, prompt2.text);
 }
 
-// Auto-detect families based on similarity
+// Auto-detect families based on similarity and assign version numbers
 function autoDetectAndBuildFamilies() {
   DB.families = {};
-
+  
   // Reset family assignments
-  DB.prompts.forEach(p => p.family = '');
-
+  DB.prompts.forEach(p => { p.family = ''; p.versionNum = 1; });
+  
   const similarities = [];
   for(let i = 0; i < DB.prompts.length; i++) {
     for(let j = i + 1; j < DB.prompts.length; j++) {
@@ -416,22 +389,64 @@ function autoDetectAndBuildFamilies() {
       }
     }
   }
-
+  
   similarities.sort((a,b) => b.sim - a.sim);
   const usedPrompts = new Set();
-
+  
   for(let sim of similarities) {
     if(!usedPrompts.has(sim.p1.id) && !usedPrompts.has(sim.p2.id)) {
-      const familyName = sim.p1.title.split(' ').slice(0, 2).join(' ') + ' Family';
+      let familyName = sim.p1.title.split(' ').slice(0, 2).join(' ') + ' Family';
+      if(sim.p1.family && sim.p1.family !== '') familyName = sim.p1.family;
+      if(sim.p2.family && sim.p2.family !== '') familyName = sim.p2.family;
+      
       sim.p1.family = familyName;
       sim.p2.family = familyName;
       usedPrompts.add(sim.p1.id);
       usedPrompts.add(sim.p2.id);
-
+      
       if(!DB.families[familyName]) {
         DB.families[familyName] = { prompts: [], icon: '', color: '#0071e3' };
       }
-      DB.families[familyName].prompts.push(sim.p1.id, sim.p2.id);
+      if(!DB.families[familyName].prompts.includes(sim.p1.id)) DB.families[familyName].prompts.push(sim.p1.id);
+      if(!DB.families[familyName].prompts.includes(sim.p2.id)) DB.families[familyName].prompts.push(sim.p2.id);
+    }
+  }
+  
+  // Add any remaining prompts that are similar to existing families
+  let changed = true;
+  while(changed) {
+    changed = false;
+    for(let familyName in DB.families) {
+      const familyPrompts = DB.families[familyName].prompts.map(id => DB.prompts.find(p => p.id === id));
+      for(let p of DB.prompts) {
+        if(p.family !== '') continue;
+        for(let fp of familyPrompts) {
+          const sim = calculateSimilarity(p.text, fp.text);
+          if(sim > 0.25) {
+            p.family = familyName;
+            DB.families[familyName].prompts.push(p.id);
+            changed = true;
+            break;
+          }
+        }
+        if(p.family !== '') break;
+      }
+    }
+  }
+  
+  // Assign version numbers within each family (sort by created date)
+  for(let familyName in DB.families) {
+    const uniqueIds = [...new Set(DB.families[familyName].prompts)];
+    const familyPrompts = uniqueIds
+      .map(id => DB.prompts.find(p => p.id === id))
+      .filter(Boolean)
+      .sort((a, b) => a.created - b.created);
+    
+    DB.families[familyName].prompts = [];
+    for(let i = 0; i < familyPrompts.length; i++) {
+      const p = familyPrompts[i];
+      p.versionNum = i + 1;
+      DB.families[familyName].prompts.push(p.id);
     }
   }
 }
@@ -453,11 +468,10 @@ function updateStats() {
   document.getElementById('stat-fam').textContent = Object.keys(DB.families).length;
   document.getElementById('stat-fav').textContent = DB.prompts.filter(p=>p.starred).length;
   document.getElementById('inbox-badge').textContent = DB.prompts.length;
-  saveToLocalStorage(); // Save after any stats change
+  saveToLocalStorage();
 }
 
 function showToast(msg) { const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2500); }
-function sleep(ms) { return new Promise(r=>setTimeout(r,ms)); }
 function timeAgo(ts) { const s=Math.floor((Date.now()-ts)/1000); if(s<60) return 'just now'; const m=Math.floor(s/60); if(m<60) return m+'m ago'; const h=Math.floor(m/60); if(h<24) return h+'h ago'; return Math.floor(h/24)+'d ago'; }
 function formatDateTime(ts) { return new Date(ts).toLocaleString(); }
 function escapeHtml(str) { if(!str) return ''; return str.replace(/[&<>]/g, m=>m==='&'?'&amp;':m==='<'?'&lt;':'&gt;'); }
@@ -492,11 +506,12 @@ function generateSuggestions(text) {
 }
 
 function findSimilarPrompts(text) {
+  // Only return prompts with similarity >= 50% (0.5)
   return DB.prompts.map(p => ({
     ...p,
     similarity: calculateSimilarity(text, p.text),
     wordDiff: getWordDiff(text, p.text)
-  })).filter(p => p.similarity > 0.15).sort((a,b) => b.similarity - a.similarity).slice(0, 3);
+  })).filter(p => p.similarity >= 0.5).sort((a,b) => b.similarity - a.similarity).slice(0, 5);
 }
 
 function renderInbox() {
@@ -504,12 +519,12 @@ function renderInbox() {
     <div class="inbox-layout">
       <div>
         <div class="paste-area" id="paste-area">
-          <div class="paste-label">Step 1 &mdash; Paste your prompt</div>
+          <div class="paste-label">Step 1 — Paste your prompt</div>
           <textarea class="paste-input" id="paste-input" placeholder="Paste your AI prompt here..." oninput="onPasteInput()" rows="6"></textarea>
         </div>
 
         <div class="metadata-section" id="metadata-section" style="display:none">
-          <div class="metadata-title">Step 2 &mdash; Review metadata</div>
+          <div class="metadata-title">Step 2 — Review metadata</div>
           <div class="metadata-grid">
             <div class="metadata-field">
               <label>Title</label>
@@ -522,7 +537,7 @@ function renderInbox() {
               </select>
             </div>
             <div class="metadata-field">
-              <label>Tags &mdash; type and press Enter to add</label>
+              <label>Tags — type and press Enter to add</label>
               <div class="tags-input-container" id="tags-container">
                 <div id="tag-list" style="display:contents"></div>
                 <input type="text" class="tags-input" id="tag-input" placeholder="Add tag..." onkeydown="handleTagKeydown(event)">
@@ -539,12 +554,12 @@ function renderInbox() {
         </div>
 
         <div class="similarity-panel" id="similarity-panel" style="display:none">
-          <div class="metadata-title">Step 3 &mdash; Similar prompts</div>
+          <div class="metadata-title">Step 3 — Similar prompts (50%+ match)</div>
           <div id="similar-prompts-list"></div>
         </div>
 
         <div class="ai-result" id="ai-result">
-          <button class="btn btn-primary" style="width:100%;justify-content:center;padding:11px 20px;font-size:13.5px" onclick="savePromptWithMetadata()">Save to Library</button>
+          <button class="btn btn-primary" style="width:100%;justify-content:center;padding:11px 20px;font-size:13.5px" onclick="savePromptWithMetadata()">Save</button>
         </div>
       </div>
 
@@ -553,7 +568,7 @@ function renderInbox() {
         <div class="recent-list">
           ${DB.prompts.slice(-5).reverse().map(p => `
             <div class="recent-row" onclick="openPromptModal('${p.id}')">
-              <div class="recent-row-icon">&#128196;</div>
+              <div class="recent-row-icon">📄</div>
               <div style="min-width:0">
                 <div style="font-size:12.5px;font-weight:500;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${escapeHtml(p.title)}</div>
                 <div style="font-size:11px;color:var(--text4);margin-top:1px">${timeAgo(p.created)}</div>
@@ -590,7 +605,7 @@ function onPasteInput() {
 function renderTags(tags) {
   const container = document.getElementById('tag-list');
   container.innerHTML = tags.map(tag => `
-    <span class="tag-chip">${escapeHtml(tag)}<button onclick="removeTag('${tag}')">&#215;</button></span>
+    <span class="tag-chip">${escapeHtml(tag)}<button onclick="removeTag('${tag}')">×</button></span>
   `).join('');
 }
 
@@ -639,7 +654,7 @@ function updateCategorySuggestions(val) { currentSuggestions.category = val; }
 function renderSimilarPrompts() {
   const container = document.getElementById('similar-prompts-list');
   if(similarPrompts.length === 0) {
-    container.innerHTML = '<div style="font-size:12.5px;color:var(--text3)">No similar prompts found.</div>';
+    container.innerHTML = '<div style="font-size:12.5px;color:var(--text3)">No prompts with 50%+ similarity found.</div>';
     return;
   }
   container.innerHTML = similarPrompts.map(p => `
@@ -647,16 +662,14 @@ function renderSimilarPrompts() {
       <div class="match-title">${escapeHtml(p.title)}</div>
       <div class="match-similarity">${(p.similarity * 100).toFixed(0)}% match</div>
       <div class="similarity-bar"><div class="similarity-fill" style="width:${p.similarity * 100}%"></div></div>
-      ${p.wordDiff.added.length > 0 || p.wordDiff.removed.length > 0 ? `
-        <div class="word-diff-container">
-          <div class="word-diff-title">Text differences</div>
-          <div style="line-height:1.8">
-            ${p.wordDiff.added.slice(0,5).map(w => `<span class="word-added">+${escapeHtml(w)}</span>`).join(' ')}
-            ${p.wordDiff.removed.slice(0,5).map(w => `<span class="word-removed">-${escapeHtml(w)}</span>`).join(' ')}
-            ${p.wordDiff.added.length > 5 ? '<span class="word-unchanged">...</span>' : ''}
-          </div>
+      <div class="word-diff-container">
+        <div class="word-diff-title">Changes from existing prompt:</div>
+        <div style="line-height:1.8">
+          ${p.wordDiff.added.length > 0 ? `<span style="font-weight:500;color:var(--green)">Added:</span> ${p.wordDiff.added.map(w => `<span class="word-added">+${escapeHtml(w)}</span>`).join(' ')}` : ''}
+          ${p.wordDiff.removed.length > 0 ? `<span style="font-weight:500;color:var(--red);margin-left:8px">Removed:</span> ${p.wordDiff.removed.map(w => `<span class="word-removed">-${escapeHtml(w)}</span>`).join(' ')}` : ''}
+          ${p.wordDiff.added.length === 0 && p.wordDiff.removed.length === 0 ? '<span class="word-unchanged">No significant changes</span>' : ''}
         </div>
-      ` : ''}
+      </div>
     </div>
   `).join('');
 }
@@ -698,7 +711,7 @@ function savePromptWithMetadata() {
     category: document.getElementById('prompt-category').value,
     tool: document.getElementById('prompt-tool').value,
     family: bestMatch ? (bestMatch.family || bestMatch.title.split(' ').slice(0,2).join(' ') + ' Family') : '',
-    version: bestMatch ? 'Variant' : 'Base',
+    versionNum: 1,
     starred: false,
     created: now,
     usedAt: now,
@@ -710,11 +723,11 @@ function savePromptWithMetadata() {
   DB.recentActivity.unshift(newId);
   if(DB.recentActivity.length > 20) DB.recentActivity.pop();
 
-  // Rebuild families
+  // Rebuild families and assign version numbers
   autoDetectAndBuildFamilies();
 
   updateStats();
-  saveToLocalStorage(); // Save after adding new prompt
+  saveToLocalStorage();
   showToast(`"${title}" saved to library`);
 
   document.getElementById('paste-input').value = '';
@@ -727,7 +740,7 @@ function savePromptWithMetadata() {
   renderInbox();
 }
 
-// Get prompts that are in families (have similar counterparts)
+// Get prompts that are in families
 function getPromptsInFamilies() {
   const inFamilies = new Set();
   Object.values(DB.families).forEach(fam => {
@@ -762,11 +775,11 @@ function renderLibrary() {
     </div>
     <div class="lib-header">
       <div class="lib-search">
-        <span class="lib-search-icon">&#128269;</span>
+        <span class="lib-search-icon">🔍</span>
         <input type="text" placeholder="Search by title or tag..." id="lib-search" oninput="libSearch(this.value)">
       </div>
     </div>
-    <div class="prompt-grid" id="prompt-grid">${promptsToShow.map(p => renderPromptCard(p, inFamilies.has(p.id))).join('') || '<div class="empty-state"><div class="empty-state-icon">&#128218;</div><div class="empty-state-text">No prompts yet</div><div class="empty-state-sub">Add your first prompt from the Inbox</div></div>'}</div>
+    <div class="prompt-grid" id="prompt-grid">${promptsToShow.map(p => renderPromptCard(p, inFamilies.has(p.id))).join('') || '<div class="empty-state"><div class="empty-state-icon">📚</div><div class="empty-state-text">No prompts yet</div><div class="empty-state-sub">Add your first prompt from the Inbox</div></div>'}</div>
   `;
 }
 
@@ -775,16 +788,16 @@ function renderPromptCard(p, isInFamily) {
   return `<div class="prompt-card" onclick="openPromptModal('${p.id}')">
     <div class="card-header">
       <div class="card-title">${escapeHtml(p.title)}${isInFamily ? '<span class="family-badge">Family</span>' : ''}</div>
-      <button class="card-star ${p.starred?'starred':''}" onclick="event.stopPropagation();toggleStar('${p.id}')">${p.starred?'&#9733;':'&#9734;'}</button>
+      <button class="card-star ${p.starred?'starred':''}" onclick="event.stopPropagation();toggleStar('${p.id}')">${p.starred?'★':'☆'}</button>
     </div>
-    <div class="card-preview">${escapeHtml(p.text.substring(0, 100))}&#8230;</div>
+    <div class="card-preview">${escapeHtml(p.text.substring(0, 100))}…</div>
     <div class="card-footer">
       <div class="card-tags">${p.tags.slice(0,3).map(t=>`<span class="tag" style="font-size:10px">#${t}</span>`).join('')}</div>
       <div class="card-time">${timeAgo(p.created)}</div>
     </div>
     <div style="margin-top:10px;display:flex;justify-content:space-between;align-items:center">
       ${similarityBadge}
-      <span style="font-size:10px;color:var(--text4);font-family:'JetBrains Mono',monospace">${p.version}</span>
+      <span style="font-size:10px;color:var(--text4);font-family:'JetBrains Mono',monospace">v${p.versionNum}</span>
     </div>
   </div>`;
 }
@@ -809,39 +822,86 @@ function libSearch(q) {
 function renderFamilies() {
   autoDetectAndBuildFamilies();
   if(Object.keys(DB.families).length === 0) {
-    document.getElementById('content-area').innerHTML = '<div class="empty-state"><div class="empty-state-icon">&#129516;</div><div class="empty-state-text">No families yet</div><div class="empty-state-sub">Save similar prompts to automatically create families</div></div>';
+    document.getElementById('content-area').innerHTML = '<div class="empty-state"><div class="empty-state-icon">🧬</div><div class="empty-state-text">No families yet</div><div class="empty-state-sub">Save similar prompts to automatically create families</div></div>';
     return;
   }
-  document.getElementById('content-area').innerHTML = `<div class="family-grid">${Object.entries(DB.families).map(([name,fam]) => `
-    <div class="prompt-card" style="cursor:default">
-      <div class="card-header">
-        <div class="card-title">${escapeHtml(name)}</div>
-        <div class="card-time">${fam.prompts.length} version${fam.prompts.length !== 1 ? 's' : ''}</div>
+  
+  let familiesHTML = '<div class="family-grid">';
+  for (let [name, fam] of Object.entries(DB.families)) {
+    const familyPrompts = fam.prompts.map(id => DB.prompts.find(x => x.id === id)).filter(Boolean);
+    familyPrompts.sort((a, b) => a.created - b.created);
+    
+    let versionsHTML = '';
+    for (let i = 0; i < familyPrompts.length; i++) {
+      const p = familyPrompts[i];
+      
+      // Get diff from previous version
+      let diffPreview = '';
+      if (i > 0) {
+        const prevPrompt = familyPrompts[i - 1];
+        const diff = getDiffBetweenPrompts(p, prevPrompt);
+        if (diff.added.length > 0 || diff.removed.length > 0) {
+          diffPreview = `
+            <div class="family-diff-preview">
+              <div style="font-size:9px;color:var(--text4);margin-bottom:4px">Changes from Version ${i}:</div>
+              <div style="font-size:10px;line-height:1.5">
+                ${diff.added.slice(0,5).map(w => `<span class="word-added">+${escapeHtml(w)}</span>`).join(' ')}
+                ${diff.removed.slice(0,5).map(w => `<span class="word-removed">-${escapeHtml(w)}</span>`).join(' ')}
+                ${(diff.added.length > 5 || diff.removed.length > 5) ? '<span class="word-unchanged">...</span>' : ''}
+              </div>
+            </div>
+          `;
+        } else {
+          diffPreview = `<div class="family-diff-preview"><span class="word-unchanged" style="font-size:10px">No significant changes</span></div>`;
+        }
+      }
+      
+      versionsHTML += `
+        <div onclick="openPromptModal('${p.id}')" class="family-item-row">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start">
+            <div style="font-size:13px;font-weight:500;color:var(--text)">${escapeHtml(p.title)}</div>
+            <div style="font-size:10px;color:var(--text4);font-family:'JetBrains Mono',monospace;background:var(--surface3);padding:2px 8px;border-radius:12px">Version ${p.versionNum}</div>
+          </div>
+          <div style="font-size:10.5px;color:var(--text4);margin-top:4px">📅 ${formatDateTime(p.created)}</div>
+          ${diffPreview}
+        </div>
+      `;
+    }
+    
+    familiesHTML += `
+      <div class="prompt-card" style="cursor:default">
+        <div class="card-header">
+          <div class="card-title">🧬 ${escapeHtml(name)}</div>
+          <div class="card-time">${fam.prompts.length} version${fam.prompts.length !== 1 ? 's' : ''}</div>
+        </div>
+        <div style="margin-top:8px">
+          ${versionsHTML}
+        </div>
       </div>
-      <div style="margin-top:4px">
-        ${fam.prompts.map(id => { const p = DB.prompts.find(x=>x.id===id); return p?`<div onclick="openPromptModal('${p.id}')" class="family-item-row"><div style="font-size:12.5px;font-weight:500;color:var(--text)">${escapeHtml(p.title)}</div><div style="font-size:11px;color:var(--text4);margin-top:2px">${formatDateTime(p.created)}</div></div>`:''; }).join('')}
-      </div>
-    </div>`).join('')}</div>`;
+    `;
+  }
+  familiesHTML += '</div>';
+  document.getElementById('content-area').innerHTML = familiesHTML;
 }
 
 function renderFavorites() {
   const starred=DB.prompts.filter(p=>p.starred);
-  document.getElementById('content-area').innerHTML=`<div class="prompt-grid">${starred.map(p=>renderPromptCard(p, false)).join('')||'<div class="empty-state"><div class="empty-state-icon">&#9733;</div><div class="empty-state-text">No favorites yet</div><div class="empty-state-sub">Star prompts to find them here quickly</div></div>'}</div>`;
+  document.getElementById('content-area').innerHTML=`<div class="prompt-grid">${starred.map(p=>renderPromptCard(p, false)).join('')||'<div class="empty-state"><div class="empty-state-icon">⭐</div><div class="empty-state-text">No favorites yet</div><div class="empty-state-sub">Star prompts to find them here quickly</div></div>'}</div>`;
 }
 
 function renderRecent() {
-  document.getElementById('content-area').innerHTML=`<div class="recent-list" style="max-width:560px">${DB.recentActivity.slice(0,10).map(id=>{const p=DB.prompts.find(x=>x.id===id); return p?`<div class="recent-row" onclick="openPromptModal('${p.id}')"><div class="recent-row-icon">&#128196;</div><div style="min-width:0;flex:1"><div style="font-size:13px;font-weight:500;color:var(--text)">${escapeHtml(p.title)}</div><div style="font-size:11px;color:var(--text4);margin-top:2px">${formatDateTime(p.usedAt||p.created)}</div></div></div>`:'';}).join('')}</div>`;
+  document.getElementById('content-area').innerHTML=`<div class="recent-list" style="max-width:560px">${DB.recentActivity.slice(0,10).map(id=>{const p=DB.prompts.find(x=>x.id===id); return p?`<div class="recent-row" onclick="openPromptModal('${p.id}')"><div class="recent-row-icon">📄</div><div style="min-width:0;flex:1"><div style="font-size:13px;font-weight:500;color:var(--text)">${escapeHtml(p.title)}</div><div style="font-size:11px;color:var(--text4);margin-top:2px">${formatDateTime(p.usedAt||p.created)}</div></div></div>`:'';}).join('')}</div>`;
 }
 
 function openPromptModal(id) {
   const p = DB.prompts.find(x=>x.id===id);
   if(!p) return;
   p.usedAt = Date.now();
-  saveToLocalStorage(); // Save when prompt is used
+  saveToLocalStorage();
   openModal(p.title, `
     <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px">${p.tags.map(t=>`<span class="tag">#${t}</span>`).join('')}<span class="tag cat">${p.category}</span><span class="tag tool">${p.tool}</span>${p.family?`<span class="tag family">${p.family}</span>`:''}</div>
     <div class="prompt-full">${escapeHtml(p.text)}</div>
-    <div class="modal-meta">Created ${formatDateTime(p.created)} &nbsp;&middot;&nbsp; Last used ${formatDateTime(p.usedAt)}</div>
+    <div class="modal-meta">Created ${formatDateTime(p.created)} &nbsp;•&nbsp; Last used ${formatDateTime(p.usedAt)} &nbsp;•&nbsp; Version ${p.versionNum}</div>
     <div class="modal-actions"><button class="btn btn-primary btn-sm" onclick="copyPrompt('${id}')">Copy</button><button class="btn btn-sm" onclick="toggleStar('${id}');closeModal()">${p.starred?'Unfavorite':'Favorite'}</button><button class="btn btn-sm" style="color:var(--red);border-color:var(--red);background:var(--red-bg)" onclick="deletePrompt('${id}')">Delete</button></div>
   `);
 }
@@ -852,7 +912,7 @@ function deletePrompt(id) { if(confirm('Delete this prompt?')){ DB.prompts=DB.pr
 function openModal(title, html) { document.getElementById('modal-title').textContent=title; document.getElementById('modal-body').innerHTML=html; document.getElementById('modal-overlay').classList.add('visible'); }
 function closeModal(e) { if(!e || e.target===document.getElementById('modal-overlay')) document.getElementById('modal-overlay').classList.remove('visible'); }
 
-// Initialize with persistence
+// Initialize
 initializeData();
 updateStats();
 renderInbox();
